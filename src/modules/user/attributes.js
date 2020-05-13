@@ -1,8 +1,9 @@
 const Sequelize = require('sequelize')
 
 exports.attr = {
-  name: { type: Sequelize.STRING, allowNull: false },
-  lastname: { type: Sequelize.STRING },
-  username: { type: Sequelize.STRING, allowNull: false },
-  password: { type: Sequelize.STRING, allowNull: false }
+  nombre: { type: Sequelize.STRING, allowNull: false },
+  nombre_usuario: { type: Sequelize.STRING, allowNull: false },
+  clave_usuario: { type: Sequelize.STRING, allowNull: false },
+  id_tipo: { type: Sequelize.INTEGER, allowNull: false},
+  id_usuario: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true }
 }

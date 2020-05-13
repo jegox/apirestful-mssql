@@ -4,4 +4,4 @@ const { attr } = require('./attributes')
 
 const sequelize = database(db)
 
-exports.User = sequelize.define('user', attr, {})
+exports.User = sequelize.define('user', attr, { tableName: 'usuario' })
