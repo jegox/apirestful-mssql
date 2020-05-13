@@ -10,5 +10,10 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use('/api', router)
 
+app.use((err, req, res, next) => {
+  console.error(err)
+  res.status(500).send('Something broke!')
+});
+
 require('../routes')(router)
 exports.app = app

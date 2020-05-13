@@ -1,14 +1,14 @@
 const { create, read, update, destroy, login } = require('../modules/user')
+const { verifyToken } = require('../lib/scripts')
 
 module.exports = router => {
   router.route('/user')
-    .all((req, res, next) => {
-      next()
+    .all(async (req, res, next) => {
+      await verifyToken(req.headers, { req, res, next })
     })
     .get(async (req, res) => { 
-      const users = await read()
-      if(!users) throw `Error al intentar ejecutar query ${users.message}`
-      res.status(200).json({users})
+      const {status, message} = await read()
+      res.status(200).json({ status, message })
     })
     .post(async (req, res) => {
       const { status, message } = await create(req.body)

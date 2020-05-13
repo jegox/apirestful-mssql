@@ -9,13 +9,18 @@ async function create(data){
     return { status: true, message: res }
   }catch(e){
     if(e.errors) return { status: false, message: e.errors.map(item => item.message.replace('user.', '')) }
-
     return { status: false, message: e.message }
   }
 }
 
-async function read(){ 
-  return await User.findAll({ attributes: { exclude: ['clave_usuario'] } })
+async function read(){
+  try{
+    const res = await User.findAll({ attributes: { exclude: ['clave_usuario'] } })
+    return { status: true, message: res }
+  }catch(e){
+    if(e.errors) return { status: false, message: e.errors.map(item => item.message.replace('user.', '')) }
+    return { status: false, message: e.message }
+  }
 }
 
 async function update(id_usuario, fields){

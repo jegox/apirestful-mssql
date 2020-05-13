@@ -10,6 +10,16 @@ async function sign(data){
   })
 }
 
+async function verify(token){
+  return new Promise((resolve, reject) => {
+    jwt.verify(token, privateKey, (err, decode) => {
+      if(!err) resolve(decode)
+      else reject(err.message)
+    })
+  })
+}
+
 module.exports = {
-  sign
+  sign,
+  verify
 }
