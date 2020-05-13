@@ -5,7 +5,7 @@ const dialectOptions = { options: { useUTC: false, dateFirst: 1 } }
 
 const Database = (setup) => {
   const { host, user, pass, db } = setup
-  return !sequelize ? sequelize = new Sequelize(db, user, pass, { host, dialect: 'mssql', dialectOptions, logging: false }) : sequelize
+  return !sequelize ? sequelize = new Sequelize(db, user, pass, { host, dialect: 'mssql', dialectOptions, logging: false, timezone: '-05:00' }) : sequelize
 }
 
 exports.database = Database

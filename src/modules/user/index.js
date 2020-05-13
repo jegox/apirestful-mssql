@@ -48,9 +48,7 @@ async function login(nombre_usuario, clave_usuario){
       user: user.nombre_usuario,
       id: user.id_usuario
     }
-    console.log('data', data)
     const token = await sign(data)
-    console.log(token)
 
     return { status: true, message: { token } }
   }catch(e){
